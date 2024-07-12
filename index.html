@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    :root {
+      --main-bg: lightblue; /* Example value for --main-bg */
+      --top-menu-bg: #333; /* Example value for --top-menu-bg */
+    }
+    .flex-ctr {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .flex-around {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    #top-menu {
+      height: 50px; /* Adjust as necessary */
+      width: 100%;
+      color: white;
+    }
+    #top-menu a {
+      color: white;
+      text-decoration: none;
+      padding: 0 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Header</h1>
+  </header>
+  <nav id="top-menu"></nav>
+  <main>
+    <h1>DOM Manipulation</h1>
+  </main>
+  <footer>
+    <p>Footer</p>
+  </footer>
+
+  <script>
+    // Part 1: Getting Started
+
+    // Selecting and caching the <main> element
+    let mainEl = document.querySelector('main');
+
+    // Setting the background color of mainEl to the value of --main-bg
+    mainEl.style.backgroundColor = 'var(--main-bg)';
+
+    // Setting the content of mainEl to <h1>DOM Manipulation</h1>
+    mainEl.innerHTML = '<h1>DOM Manipulation</h1>';
+
+    // Adding a class of flex-ctr to mainEl
+    mainEl.classList.add('flex-ctr');
+
+    // Part 2: Creating a Menu Bar
+
+    // Selecting and caching the <nav id="top-menu"> element
+    let topMenuEl = document.getElementById('top-menu');
+
+    // Setting the height of topMenuEl to be 100%
+    topMenuEl.style.height = '100%';
+
+    // Setting the background color of topMenuEl to the value of --top-menu-bg
+    topMenuEl.style.backgroundColor = 'var(--top-menu-bg)';
+
+    // Adding a class of flex-around to topMenuEl
+    topMenuEl.classList.add('flex-around');
+
+    // Part 3: Adding Menu Buttons
+
+    // Menu data structure
+    var menuLinks = [
+      { text: 'about', href: '/about' },
+      { text: 'catalog', href: '/catalog' },
+      { text: 'orders', href: '/orders' },
+      { text: 'account', href: '/account' },
+    ];
+
+    // Iterate over the menuLinks array
+    menuLinks.forEach(link => {
+      // Create an <a> element
+      let a = document.createElement('a');
+
+      // Add an href attribute with its value set to the href property of the link object
+      a.setAttribute('href', link.href);
+
+      // Set the new element's content to the value of the text property of the link object
+      a.textContent = link.text;
+
+      // Append the new element to the topMenuEl element
+      topMenuEl.appendChild(a);
+    });
+  </script>
+</body>
+</html>
